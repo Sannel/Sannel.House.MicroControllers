@@ -1,0 +1,4 @@
+#pragma once
+
+#define SSID "Your SSID"
+#define SSIDPWD "Your PWD"
