@@ -9,8 +9,7 @@
 #include <WiFiClientSecure.h>
 #include <WiFiServer.h>
 #include <WiFiUdp.h>
-#include "LocalDefines.h"
-#include <SannelCommon.h>
+#include "Defines.h"
 
 // From http://iotfrog.com/en/articles/article/227
 
@@ -62,7 +61,7 @@ void fncUdpSend()
 	TypeHelper::AddToArray(udpBuffer, q);
 	Serial.printf("id - %i %i %i %i\n", udpBuffer[0], udpBuffer[1], udpBuffer[2], udpBuffer[3]);
 
-	TypeHelper::AddToArray(udpBuffer, SensorTypes::Test, 4);
+	TypeHelper::AddToArray(udpBuffer, (int)SensorTypes::Test, 4);
 
 	Serial.printf("s - %i %i %i %i\n", udpBuffer[4], udpBuffer[5], udpBuffer[6], udpBuffer[7]);
 
@@ -86,7 +85,7 @@ void fncUdpSend()
 // send udp packet each 5 secconds
 
 void loop() {
-	delay(5000);
 	fncUdpSend();
+	delay(100000);
 }
 

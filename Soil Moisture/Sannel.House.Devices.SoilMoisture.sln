@@ -1,15 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoilMoisture", "SoilMoisture\SoilMoisture.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SannelCommon", "..\SannelCommon\SannelCommon.vcxitems", "{61B32429-2368-422F-B52C-99485B602C91}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SannelHouseCommon", "..\Sannel.House.Common\SannelHouseCommon\SannelHouseCommon.vcxitems", "{63F9001F-0B86-4AC2-8844-ACE5300403EE}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		..\SannelCommon\SannelCommon.vcxitems*{61b32429-2368-422f-b52c-99485b602c91}*SharedItemsImports = 9
+		..\Sannel.House.Common\SannelHouseCommon\SannelHouseCommon.vcxitems*{63f9001f-0b86-4ac2-8844-ace5300403ee}*SharedItemsImports = 9
+		..\Sannel.House.Common\SannelHouseCommon\SannelHouseCommon.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 		..\SannelCommon\SannelCommon.vcxitems*{c5f80730-f44f-4478-bdae-6634efc2ca88}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

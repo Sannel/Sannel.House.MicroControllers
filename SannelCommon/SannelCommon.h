@@ -14,13 +14,6 @@
 	#include "WProgram.h"
 #endif
 
-class SensorTypes
-{
-public:
-	static const int Test = 0;
-	static const int Temperature = 1;
-};
-
 class TypeHelper
 {
 public:
