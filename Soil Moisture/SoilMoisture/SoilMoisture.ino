@@ -61,7 +61,7 @@ void fncUdpSend()
 	TypeHelper::AddToArray(udpBuffer, q);
 	Serial.printf("id - %i %i %i %i\n", udpBuffer[0], udpBuffer[1], udpBuffer[2], udpBuffer[3]);
 
-	TypeHelper::AddToArray(udpBuffer, (int)SensorTypes::Test, 4);
+	TypeHelper::AddToArray(udpBuffer, (int)Sannel::House::SensorTypes::Temperature, 4);
 
 	Serial.printf("s - %i %i %i %i\n", udpBuffer[4], udpBuffer[5], udpBuffer[6], udpBuffer[7]);
 
