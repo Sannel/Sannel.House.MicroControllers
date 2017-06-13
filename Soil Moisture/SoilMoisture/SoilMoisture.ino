@@ -11,13 +11,14 @@
 #include <WiFiUdp.h>
 #include "Defines.h"
 
+using namespace Sannel::House::Sensor;
+
 // From http://iotfrog.com/en/articles/article/227
 
 IPAddress ipBroadCast(192, 168, 1, 255);
 unsigned int udpRemotePort = 8172;
 unsigned int udplocalPort = 2390;
-const int UDP_PACKET_SIZE = 48;
-uint8 udpBuffer[UDP_PACKET_SIZE];
+SensorPacketUnion packet;
 WiFiUDP udp;
 //================================================================
 // Setup hardware, serial port, and connect to wifi.
@@ -49,32 +50,36 @@ void setup() {
 	Serial.print("Local port: ");
 	Serial.println(udp.localPort());
 }
+void printPacket()
+{
+	int i = 0;
+	for (i = 0; i < 16; i++) 
+	{
+		Serial.printf("%i ", packet.Data[i]);
+	}
+	Serial.println();
+}
 //================================================================
 // Function to send udp message
 //================================================================
 void fncUdpSend()
 {
 	Serial.println("Sending packet");
-	std::fill_n(udpBuffer, sizeof(udpBuffer), 0);
+	printPacket();
 
-	int q =  20110;
-	TypeHelper::AddToArray(udpBuffer, q);
-	Serial.printf("id - %i %i %i %i\n", udpBuffer[0], udpBuffer[1], udpBuffer[2], udpBuffer[3]);
+	ResetSensorPacketUnion(&packet);
+	printPacket();
 
-	TypeHelper::AddToArray(udpBuffer, (int)Sannel::House::SensorTypes::Temperature, 4);
+	packet.Packet.DeviceId = random(1, 70000);
+	packet.Packet.SensorType = SensorTypes::Test;
+	packet.Packet.Values[0] = (double)random(2, 200) + ((double)random(400, 700) / 1000);
+	Serial.println(packet.Packet.Values[0]);
 
-	Serial.printf("s - %i %i %i %i\n", udpBuffer[4], udpBuffer[5], udpBuffer[6], udpBuffer[7]);
 
-	Serial.println(sizeof(double));
-	double d = 324;// (double)random(1, 500);
-	Serial.println(d);
-
-	TypeHelper::AddToArray(udpBuffer, d, 8);
-
-	Serial.printf("d - %i %i %i %i %i %i %i %i\n", udpBuffer[8], udpBuffer[9], udpBuffer[10], udpBuffer[11], udpBuffer[12], udpBuffer[13], udpBuffer[14], udpBuffer[15]);
+	printPacket();
 
 	udp.beginPacket(ipBroadCast, udpRemotePort);
-	udp.write(udpBuffer, sizeof(udpBuffer));
+	udp.write(packet.Data, sizeof(packet));
 	udp.endPacket();
 	Serial.print(millis());
 	Serial.println(" packet sent");
@@ -86,6 +91,6 @@ void fncUdpSend()
 
 void loop() {
 	fncUdpSend();
-	delay(100000);
+	delay(5000);
 }
 

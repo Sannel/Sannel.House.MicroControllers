@@ -2,7 +2,7 @@
 #define _DEFINE_H_
 
 #include "LocalDefines.h"
-#include <SannelCommon.h>
-#include <SensorTypes.h>
+#include <Sensor\SensorTypes.h>
+#include <Sensor\SensorPacket.h>
 
 #endif
