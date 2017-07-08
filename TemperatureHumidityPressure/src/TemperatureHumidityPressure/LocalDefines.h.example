@@ -1,0 +1,8 @@
+﻿#pragma once
+
+#define SSID "Your SSID"
+#define SSIDPWD "Your PWD"
+#define BROADCASTIP_FIRST 192
+#define BROADCASTIP_SECOND 168
+#define BROADCASTIP_THIRD 0
+#define BROADCASTIP_FORTH 255
