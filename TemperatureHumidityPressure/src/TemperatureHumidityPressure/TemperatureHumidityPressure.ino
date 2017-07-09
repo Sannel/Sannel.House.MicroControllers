@@ -19,9 +19,12 @@ void setup()
 	pinMode(LED_BUILTIN, OUTPUT);
 	digitalWrite(LED_BUILTIN, HIGH);
 	Serial.begin(115200);
-	delay(500);
+	delay(250);
 	Serial.println();
 	Serial.println();
+#ifdef DEBUG
+	Serial.println("Debug");
+#endif
 	Serial.print("Connecting to ");
 	Serial.println(SSID);
 	WiFi.begin(SSID, SSIDPWD);
@@ -54,6 +57,6 @@ void setup()
 void loop() 
 {
 	sensor.prepareAndSendPacket(&udp, &broadcast);
-	delay(30000);
+	delay(900000);
 	//ESP.deepSleep(10000000);
 }

@@ -1,9 +1,5 @@
 ﻿#pragma once
 
-// BEGIN Configuration
-#define DEBUG // undefine this to use production settings
-// END Configuration
-
 #ifdef ESP8266
 #include <WiFiUdp.h>
 #include <WiFiServer.h>

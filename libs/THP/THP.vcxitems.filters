@@ -11,13 +11,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\BME280Wrapper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\TemperatureSensorWrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\THP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\BME280Wrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,13 +29,13 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\TemperatureSensorWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\BME280Wrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\ITHPSensor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\TemperatureSensorWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
