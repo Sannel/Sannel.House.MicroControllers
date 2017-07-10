@@ -7,6 +7,9 @@
 #define DEBUG
 #include "SparkFun_Photon_Weather_Shield_Library.h"
 #include "SannelDefines.h"
+#include "Particle.h"
+
+UDP udp;
 
 // setup() runs once, when the device is first turned on.
 void setup() {

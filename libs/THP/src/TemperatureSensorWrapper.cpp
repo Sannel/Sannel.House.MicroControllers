@@ -25,7 +25,7 @@ TemperatureSensorWrapper::TemperatureSensorWrapper(int deviceId, ITHPSensor* sen
 #ifdef ESP8266
 void TemperatureSensorWrapper::prepareAndSendPacket(WiFiUDP* udp, IPAddress* broadcast)
 #else
-void TemperatureSensorWrapper::prepareAndSendPacket(Udp* udp, IPAddress* broadcast)
+void TemperatureSensorWrapper::prepareAndSendPacket(UDP* udp, IPAddress* broadcast)
 #endif
 {
 	ResetSensorPacketUnion(&(this->packet));

@@ -16,7 +16,11 @@
 
 #include "ITHPSensor.h"
 #include <SensorPacket.h>
+#ifdef ESP8266
 #include <WiFiUdp.h>
+#else
+#include "Particle.h"
+#endif
 
 using namespace Sannel::House::Sensor;
 
@@ -54,7 +58,7 @@ public:
 #ifdef ESP8266
 	void prepareAndSendPacket(WiFiUDP* udp, IPAddress *broadcast);
 #else
-	void prepareAndSendPacket(Udp* udp, IPAddress *broadcast);
+	void prepareAndSendPacket(UDP* udp, IPAddress *broadcast);
 #endif
 
 
