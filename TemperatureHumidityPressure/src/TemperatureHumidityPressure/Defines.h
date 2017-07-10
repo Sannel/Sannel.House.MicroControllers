@@ -1,5 +1,7 @@
 ﻿#pragma once
 
+#define SUPPORT_BME280 // You may need to configure this in the project its self
+
 #ifdef ESP8266
 #include <WiFiUdp.h>
 #include <WiFiServer.h>
