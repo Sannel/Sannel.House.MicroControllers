@@ -16,8 +16,9 @@
 
 #include "ITHPSensor.h"
 #include <SensorPacket.h>
+#include <Stream.h>
 #ifdef ESP8266
-#include <WiFiUdp.h>
+#include <WiFiClient.h>
 #else
 #include "Particle.h"
 #endif
@@ -27,7 +28,7 @@ using namespace Sannel::House::Sensor;
 class TemperatureSensorWrapper
 {
 public:
-	TemperatureSensorWrapper(int deviceId, ITHPSensor* sensor);
+	TemperatureSensorWrapper(int deviceId, ITHPSensor& sensor);
 
 	/// <summary>
 	/// Initializes this instance using settings defined for the sensor
@@ -56,17 +57,40 @@ public:
 	double getTemperature();
 
 #ifdef ESP8266
-	void prepareAndSendPacket(WiFiUDP* udp, IPAddress *broadcast);
+	void prepareAndSendPacket(WiFiClient &udp, IPAddress &broadcast);
 #else
 	void prepareAndSendPacket(UDP* udp, IPAddress *broadcast);
 #endif
 
 
 private:
-	SensorPacketUnion packet;
+	SensorPacket packet;
 	int deviceId;
 	ITHPSensor* sensor;
 
+	template<typename T>
+	void writeValue(Stream &stream, T &value)
+	{
+		int size = sizeof(T);
+		unsigned char* ptr = (unsigned char*)&value;
+		for (int i = 0; i < size; i++)
+		{
+			stream.write(ptr[i]);
+		}
+	};
+	template<typename T>
+	void printValue(Print &print, T &value) 
+	{
+		print.printf("value = %i", value);
+		print.println();
+		int size = sizeof(T);
+		unsigned char* ptr = (unsigned char*)&value;
+		for (int i = 0; i < size; i++)
+		{
+			print.printf("%i ", ptr[i]);
+		}
+		print.println();
+	};
 	void printPacket();
 };
 

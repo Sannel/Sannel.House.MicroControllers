@@ -16,40 +16,54 @@
 #include <Arduino.h>
 
 
-TemperatureSensorWrapper::TemperatureSensorWrapper(int deviceId, ITHPSensor* sensor)
+TemperatureSensorWrapper::TemperatureSensorWrapper(int deviceId, ITHPSensor& sensor)
 {
 	this->deviceId = deviceId;
-	this->sensor = sensor;
+	this->sensor = &sensor;
 }
 
 #ifdef ESP8266
-void TemperatureSensorWrapper::prepareAndSendPacket(WiFiUDP* udp, IPAddress* broadcast)
+void TemperatureSensorWrapper::prepareAndSendPacket(WiFiClient &client, IPAddress &address)
 #else
 void TemperatureSensorWrapper::prepareAndSendPacket(UDP* udp, IPAddress* broadcast)
 #endif
 {
-	ResetSensorPacketUnion(&(this->packet));
-	this->packet.Packet.Values[0] = this->getTemperature();
-	this->packet.Packet.Values[1] = this->getHumidity();
-	this->packet.Packet.Values[2] = this->getPressure();
-	this->packet.Packet.DeviceId = this->deviceId;
-	this->packet.Packet.SensorType = SensorTypes::TemperatureHumidityPresure;
+	ResetSensorPacket(packet);
+	packet.Values[0] = getTemperature();
+	packet.Values[1] = getHumidity();
+	packet.Values[2] = getPressure();
+	packet.DeviceId = deviceId;
+	packet.MillsOffset = 0;
+	packet.SensorType = SensorTypes::TemperatureHumidityPresure;
 
 	Serial.println("Sending Packet");
 	this->printPacket();
 
-	udp->beginPacket(*broadcast, SENSOR_BROADCAST_PORT);
-	udp->write(this->packet.Data, sizeof(this->packet.Data));
-	udp->endPacket();
+	if (client.connect(address, SENSOR_BROADCAST_PORT)) 
+	{
+		client.write(1);
+		writeValue(client, packet.DeviceId);
+		writeValue(client, packet.SensorType);
+		writeValue(client, packet.MillsOffset);
+
+		for (unsigned char i=0; i < 9; i++)
+		{
+			writeValue(client, packet.Values[i]);
+		}
+		client.flush();
+		client.stop();
+	}
 }
 
 void TemperatureSensorWrapper::printPacket()
 {
-	int i = 0;
 	Serial.print("Packet ");
-	for (i = 0; i < sizeof(packet.Data); i++)
+	printValue(Serial, packet.DeviceId);
+	printValue(Serial, packet.SensorType);
+	printValue(Serial, packet.MillsOffset);
+	for (unsigned char i=0; i < 9; i++) 
 	{
-		Serial.printf("%i ", packet.Data[i]);
+		printValue(Serial, packet.Values[i]);
 	}
 	Serial.println();
 	Serial.println();

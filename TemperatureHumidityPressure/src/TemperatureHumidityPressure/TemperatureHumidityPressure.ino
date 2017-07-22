@@ -9,9 +9,9 @@
 
 #include <BME280Wrapper.h>
 
-WiFiUDP udp;
+WiFiClient client;
 BME280Wraper temp(I2C_MODE, 0x76);
-TemperatureSensorWrapper sensor(10, &temp);
+TemperatureSensorWrapper sensor(10, temp);
 IPAddress broadcast(BROADCASTIP_FIRST, BROADCASTIP_SECOND, BROADCASTIP_THIRD, BROADCASTIP_FORTH);
 
 void setup() 
@@ -56,7 +56,7 @@ void setup()
 // the loop function runs over and over again until power down or reset
 void loop() 
 {
-	sensor.prepareAndSendPacket(&udp, &broadcast);
+	sensor.prepareAndSendPacket(client, broadcast);
 	delay(900000);
 	//ESP.deepSleep(10000000);
 }
