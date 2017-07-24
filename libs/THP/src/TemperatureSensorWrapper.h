@@ -57,9 +57,9 @@ public:
 	double getTemperature();
 
 #ifdef ESP8266
-	void prepareAndSendPacket(WiFiClient &udp, IPAddress &broadcast);
+	void prepareAndSendPacket(WiFiClient &client, IPAddress &address);
 #else
-	void prepareAndSendPacket(UDP* udp, IPAddress *broadcast);
+	void prepareAndSendPacket(TCPClient &client, IPAddress &address);
 #endif
 
 
