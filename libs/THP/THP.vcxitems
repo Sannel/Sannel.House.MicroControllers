@@ -28,6 +28,5 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)src\BME280Wrapper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ITHPSensor.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\WeatherWrapper.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WeatherWrapper.h" />
   </ItemGroup>
 </Project>

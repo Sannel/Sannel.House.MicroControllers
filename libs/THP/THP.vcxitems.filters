@@ -38,9 +38,6 @@
     <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\ITHPSensor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\WeatherWrapper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\WeatherWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>

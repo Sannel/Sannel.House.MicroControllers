@@ -1,4 +1,5 @@
-﻿#include "WeatherWrapper.h"
+﻿#if defined SparkFun_Photon_Weather_Shield_Library_h
+#include "WeatherWrapper.h"
 
 WeatherWrapper::WeatherWrapper(Weather &weather)
 {
@@ -35,3 +36,5 @@ double WeatherWrapper::getPresure()
 {
 	return (double)this->weather->readPressure();
 }
+
+#endif
