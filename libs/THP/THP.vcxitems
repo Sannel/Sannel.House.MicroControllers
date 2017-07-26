@@ -21,12 +21,10 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\BME280Wrapper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)src\TemperatureSensorWrapper.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\WeatherWrapper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)THP.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)src\BME280Wrapper.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)src\ITHPSensor.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)src\WeatherWrapper.h" />
   </ItemGroup>
 </Project>

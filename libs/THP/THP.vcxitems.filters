@@ -20,9 +20,6 @@
     <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\THP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\WeatherWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="$(MSBuildThisFileDirectory)readme.txt" />
@@ -36,9 +33,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\ITHPSensor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\WeatherWrapper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
