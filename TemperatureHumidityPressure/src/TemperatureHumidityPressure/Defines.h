@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #define SUPPORT_BME280 // You may need to configure this in the project its self
 
@@ -18,4 +18,3 @@
 
 #include "LocalDefines.h"
 #include <SannelDefines.h>
-#include <TemperatureSensorWrapper.h>

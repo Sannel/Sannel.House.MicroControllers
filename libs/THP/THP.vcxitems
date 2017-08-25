@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)src\BME280Wrapper.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)src\TemperatureSensorWrapper.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)THP.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -14,9 +14,6 @@
     <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\BME280Wrapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\src\TemperatureSensorWrapper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="C:\Code\Sannel\Sannel.House.Devices\libs\THP\THP.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
