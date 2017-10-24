@@ -83,13 +83,15 @@ void loop()
 	if (store.AddReading(packet))
 	{
 		Serial.println("Store full sending packets");
+		Serial.print("Writing to ");
+		Serial.println(broadcast.toString());
 		if (client.connect(broadcast, SENSOR_BROADCAST_PORT))
 		{
 			Serial.println("Connected writing packets");
 			store.WritePackets(client);
-			store.Reset();
 			client.flush();
-			client.stop();
+			client.stopAll();
+			store.Reset();
 			Serial.println("packets written");
 		}
 		else 

@@ -5,29 +5,31 @@
  * Date:
  */
 #define DEBUG
+#include "Particle.h"
 #include "SannelDefines.h"
 #include "LocalDefines.h"
-#include "WeatherWrapper.h"
-#include "TemperatureSensorWrapper.h"
-#include "Particle.h"
+#include "SensorStore.h"
+//#include "WeatherWrapper.h"
+//#include "TemperatureSensorWrapper.h"
+
+
+using namespace Sannel::House::Sensor;
 
 TCPClient client;
-WeatherWrapper wrapper;
-TemperatureSensorWrapper sensor(11, wrapper);
+SensorStore store(1);
 IPAddress broadcast(BROADCASTIP_FIRST, BROADCASTIP_SECOND, BROADCASTIP_THIRD, BROADCASTIP_FORTH);
 
 
 // setup() runs once, when the device is first turned on.
 void setup() {
-    Particle.publish("started", "started");
+  WiFi.on();
+  Particle.publish("started", "started");
 	// Put initialization like pinMode and begin functions here.
-    sensor.initialize();
-    sensor.begin();
+  byte mac[6];
+  WiFi.macAddress(mac);
+  store.SetMacAddress(mac);
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-	// The core of your code will likely live here.
-    sensor.prepareAndSendPacket(client, broadcast);
-	delay(900000);
 }
